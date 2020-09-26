@@ -48,6 +48,11 @@ namespace EmployeeWages
                 Console.WriteLine("Employee is Absent");
                 Console.WriteLine("So, his/her today's wage is Rs. 0.00");
             }
+
+            int monthlyWage;
+            monthlyWage = CalculateMonthlyWage();
+            Console.WriteLine("The monthly wage of that employee is " + monthlyWage);
+
             return; 
         }
 
@@ -69,6 +74,21 @@ namespace EmployeeWages
             if (presence)
                 dailyWage = WAGE_PER_HOUR * workHour;
             return dailyWage;
+        }
+
+        static int CalculateMonthlyWage()
+        {
+            int idx;
+            int monthlyPresence =0, monthlyWage = 0;
+
+            for(idx=0; idx<20; idx++)
+            {
+                if (CheckPresentOrAbsent())
+                    monthlyPresence++;
+            }
+            monthlyWage = monthlyPresence * 8 * 20;
+
+            return monthlyWage;
         }
     }
 }
