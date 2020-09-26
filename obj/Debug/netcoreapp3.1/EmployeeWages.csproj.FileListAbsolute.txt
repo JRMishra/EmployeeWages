@@ -1,0 +1,13 @@
+C:\Users\user\Desktop\Training-CapG\Task1\EmployeeWages\bin\Debug\netcoreapp3.1\EmployeeWages.exe
+C:\Users\user\Desktop\Training-CapG\Task1\EmployeeWages\bin\Debug\netcoreapp3.1\EmployeeWages.deps.json
+C:\Users\user\Desktop\Training-CapG\Task1\EmployeeWages\bin\Debug\netcoreapp3.1\EmployeeWages.runtimeconfig.json
+C:\Users\user\Desktop\Training-CapG\Task1\EmployeeWages\bin\Debug\netcoreapp3.1\EmployeeWages.runtimeconfig.dev.json
+C:\Users\user\Desktop\Training-CapG\Task1\EmployeeWages\bin\Debug\netcoreapp3.1\EmployeeWages.dll
+C:\Users\user\Desktop\Training-CapG\Task1\EmployeeWages\bin\Debug\netcoreapp3.1\EmployeeWages.pdb
+C:\Users\user\Desktop\Training-CapG\Task1\EmployeeWages\obj\Debug\netcoreapp3.1\EmployeeWages.csprojAssemblyReference.cache
+C:\Users\user\Desktop\Training-CapG\Task1\EmployeeWages\obj\Debug\netcoreapp3.1\EmployeeWages.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\Training-CapG\Task1\EmployeeWages\obj\Debug\netcoreapp3.1\EmployeeWages.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\Training-CapG\Task1\EmployeeWages\obj\Debug\netcoreapp3.1\EmployeeWages.AssemblyInfo.cs
+C:\Users\user\Desktop\Training-CapG\Task1\EmployeeWages\obj\Debug\netcoreapp3.1\EmployeeWages.dll
+C:\Users\user\Desktop\Training-CapG\Task1\EmployeeWages\obj\Debug\netcoreapp3.1\EmployeeWages.pdb
+C:\Users\user\Desktop\Training-CapG\Task1\EmployeeWages\obj\Debug\netcoreapp3.1\EmployeeWages.genruntimeconfig.cache
