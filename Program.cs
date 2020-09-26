@@ -14,18 +14,40 @@ namespace EmployeeWages
 
             bool attendance;
             attendance = CheckPresentOrAbsent();
+
+            
             if (attendance)
+            {
+                string isFullTime;
+
                 Console.WriteLine("Employee is Present");
+                Console.WriteLine("Is the above one a full time employee ? ( yes / no )");
+                isFullTime = Console.ReadLine().ToLower();
+
+                int dailyWage;
+                switch (isFullTime)
+                {
+
+                    case "yes":
+                        dailyWage = DailyWage(attendance, FULL_DAY_HOUR);
+                        Console.WriteLine("As a full time employee, his/her");
+                        Console.WriteLine("today's wage is Rs. {0}.00", dailyWage);
+                        break;
+                    case "no":
+                        dailyWage = DailyWage(attendance, HALF_DAY_HOUR);
+                        Console.WriteLine("As a part time employee, his/her");
+                        Console.WriteLine("today's wage is Rs. {0}.00", dailyWage);
+                        break;
+                    default:
+                        Console.WriteLine("You choosed wrong option");
+                        break;
+                }
+            }
             else
+            {
                 Console.WriteLine("Employee is Absent");
-
-            int dailyWage;
-            dailyWage = DailyWage(attendance, FULL_DAY_HOUR);
-            Console.WriteLine("So, if full time employee, today's wage is Rs. {0}.00", dailyWage);
-
-            dailyWage = DailyWage(attendance, HALF_DAY_HOUR);
-            Console.WriteLine("else part time wage is Rs. {0}.00", dailyWage);
-
+                Console.WriteLine("So, his/her today's wage is Rs. 0.00");
+            }
             return; 
         }
 
