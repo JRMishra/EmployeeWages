@@ -21,7 +21,11 @@ namespace EmployeeWages
 
             int dailyWage;
             dailyWage = DailyWage(attendance, FULL_DAY_HOUR);
-            Console.WriteLine("So, Today's Wage is Rs. {0}.00", dailyWage);
+            Console.WriteLine("So, if full time employee, today's wage is Rs. {0}.00", dailyWage);
+
+            dailyWage = DailyWage(attendance, HALF_DAY_HOUR);
+            Console.WriteLine("else part time wage is Rs. {0}.00", dailyWage);
+
             return; 
         }
 
