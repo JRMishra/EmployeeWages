@@ -23,6 +23,7 @@ namespace EmployeeWages
             string ifFullTime;
             Console.WriteLine("Is the employee with Id No. {0} a full time employee ? ( yes / no )",empID);
             ifFullTime = Console.ReadLine().ToLower();
+            Console.WriteLine(ifFullTime);
 
             switch (ifFullTime)
             {
@@ -46,7 +47,7 @@ namespace EmployeeWages
             if (attendance)
             {
                 Console.WriteLine("Employee is Present");
-                dailyWage = DailyWage(attendance, FULL_DAY_HOUR);
+                dailyWage = DailyWage(attendance, dailyWorkHours);
                 Console.WriteLine("today's wage is Rs. {0}.00", dailyWage);
             }
             else
