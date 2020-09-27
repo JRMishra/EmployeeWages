@@ -53,6 +53,33 @@ namespace EmployeeWages
             monthlyWage = CalculateMonthlyWage();
             Console.WriteLine("The monthly wage of that employee is " + monthlyWage);
 
+            Console.WriteLine("Enter\n" +
+                "1. To Calculate Employee Wage for Certain Days\n" +
+                "2. To Calculate Employee Wage for Certain Hours\n" +
+                "3. Exit");
+            int userChoice = Int32.Parse(Console.ReadLine());
+            int totalWage;
+
+            switch (userChoice)
+            {
+                
+                case 1:
+                    Console.WriteLine("Enter Number of days: ");
+                    int days = Int32.Parse(Console.ReadLine());
+                    totalWage = DailyWage(true, days * FULL_DAY_HOUR);
+                    Console.WriteLine("Total wage of " + days + " days is " + totalWage);
+                    break;
+                case 2:
+                    Console.WriteLine("Enter Number of hourss: ");
+                    int hours = Int32.Parse(Console.ReadLine());
+                    totalWage = DailyWage(true, hours);
+                    Console.WriteLine("Total wage of " + hours + " hourss is " + totalWage);
+                    break;
+                default:
+                    break;
+            }
+            Console.WriteLine("\nThank you for using Employee Wage Computation Program");
+
             return; 
         }
 
