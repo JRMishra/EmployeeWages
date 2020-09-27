@@ -131,6 +131,7 @@ namespace EmployeeWages
             }
             monthlyWage = monthlyPresence * dailyHours * 20;
 
+            Console.WriteLine("The employee was present {0} days in the month",monthlyPresence);
             return monthlyWage;
         }
     }
