@@ -20,34 +20,19 @@ namespace EmployeeWages
 
             int dailyWorkHours;
             bool isFullTime;
-            string ifFullTime;
-            Console.WriteLine("Is the employee with Id No. {0} a full time employee ? ( yes / no )",empID);
-            ifFullTime = Console.ReadLine().ToLower();
-            Console.WriteLine(ifFullTime);
 
-            switch (ifFullTime)
-            {
-                case "yes":
-                    isFullTime = true;
-                    dailyWorkHours = FULL_DAY_HOUR;
-                    break;
-                case "no":
-                    isFullTime = false;
-                    dailyWorkHours = HALF_DAY_HOUR;
-                    break;
-                default:
-                    Console.WriteLine("You choosed wrong option\n" +
-                        "The person got assigned as full time employee");
-                    dailyWorkHours = FULL_DAY_HOUR;
-                    isFullTime = true;
-                    break;
-            }
+            isFullTime = IsFullTimeEmployee();
+            if (isFullTime)
+                dailyWorkHours = FULL_DAY_HOUR;
+            else
+                dailyWorkHours = HALF_DAY_HOUR;
 
             int dailyWage;
+            dailyWage = DailyWage(attendance, dailyWorkHours);
+
             if (attendance)
             {
-                Console.WriteLine("Employee is Present");
-                dailyWage = DailyWage(attendance, dailyWorkHours);
+                Console.WriteLine("Employee is Present"); 
                 Console.WriteLine("today's wage is Rs. {0}.00", dailyWage);
             }
             else
@@ -116,6 +101,15 @@ namespace EmployeeWages
             return dailyWage;
         }
 
+        static bool IsFullTimeEmployee()
+        {
+            Random random = new Random();
+            int num = random.Next(1, 3);
+            if (num == 2)
+                return true;
+            else
+                return false;
+        }
         static int CalculateMonthlyWage(bool typeOfEmployee)
         {
             int idx;
