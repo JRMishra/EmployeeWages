@@ -11,6 +11,7 @@ namespace EmployeeWages
 
             int FULL_DAY_HOUR = 8;
             int HALF_DAY_HOUR = 4;
+            int MONTHLY_ATTENDANCE = 20;
 
             int empID;
             empID = GenerateEmpId();
@@ -42,7 +43,7 @@ namespace EmployeeWages
             }
 
             int monthlyWage;
-            monthlyWage = CalculateMonthlyWage(isFullTime);
+            monthlyWage = CalculateMonthlyWage(MONTHLY_ATTENDANCE);
             Console.WriteLine("The monthly wage of that employee is " + monthlyWage);
 
             Console.WriteLine("Enter\n" +
@@ -110,22 +111,20 @@ namespace EmployeeWages
             else
                 return false;
         }
-        static int CalculateMonthlyWage(bool typeOfEmployee)
+        static int CalculateMonthlyWage(int monthlyPresence)
         {
             int idx;
-            int monthlyPresence = 0, monthlyWage = 0, dailyHours = 4; ;
+            int monthlyWage = 0, monthlyHours = 0;
 
-            if (typeOfEmployee)
-                dailyHours = 8;
-
-            for(idx=0; idx<20; idx++)
+            for(idx=1; idx<=monthlyPresence; idx++)
             {
-                if (CheckPresentOrAbsent())
-                    monthlyPresence++;
+                if (IsFullTimeEmployee())
+                    monthlyHours += 8;
+                else
+                    monthlyHours += 4;
             }
-            monthlyWage = monthlyPresence * dailyHours * 20;
+            monthlyWage = monthlyHours * 20;
 
-            Console.WriteLine("The employee was present {0} days in the month",monthlyPresence);
             return monthlyWage;
         }
     }
