@@ -6,7 +6,7 @@ namespace EmployeeWages
 {
     class EmpWageBuilder
     {
-        Employee emp = new Employee();
+        Employee emp ;
         int _fullDayWorkHour;
         int _ratePerHour;
         int _monthlyWorkDay;
@@ -15,24 +15,41 @@ namespace EmployeeWages
 
         public EmpWageBuilder()
         {
+            emp = new Employee();
             this.FullDayWorkHour = 8;
             this.WagePerHour = 20;
             this.MonthlyWorkDay = 20;
             this.MaxHourPerMonth = 100;
         }
 
-        public EmpWageBuilder(int FullDayWorkHour, int WagePerHour, int MonthlyWorkDay, int MaxMonthlyWorkHour)
+        public EmpWageBuilder(string company, int FullDayWorkHour, int WagePerHour, int MonthlyWorkDay, int MaxMonthlyWorkHour)
         {
+            emp = new Employee(company);
             this.FullDayWorkHour = FullDayWorkHour;
             this.WagePerHour = WagePerHour;
             this.MonthlyWorkDay = MonthlyWorkDay;
             this.MaxHourPerMonth = MaxMonthlyWorkHour;
         }
 
+        public EmpWageBuilder(Company company)
+        {
+            emp = new Employee(company.Name);
+            this.FullDayWorkHour = company.FullDayWorkHour;
+            this.WagePerHour = company.WagePerHour;
+            this.MonthlyWorkDay = company.MonthlyWorkingDay;
+            this.MaxHourPerMonth = company.MonthlyMaxWorkHour;
+        }
+
         public int FullDayWorkHour { get => _fullDayWorkHour; set => _fullDayWorkHour = value; }
         public int WagePerHour { get => _ratePerHour; set => _ratePerHour = value; }
         public int MonthlyWorkDay { get => _monthlyWorkDay; set => _monthlyWorkDay = value; }
         public int MaxHourPerMonth { get => _maxHourPerMonth; set => _maxHourPerMonth = value; }
+        public int TotalMonthlyWage {
+            get
+            {
+                return MonthlyWage();
+            }
+        }
 
         public int MonthlyWage()
         {
@@ -54,7 +71,6 @@ namespace EmployeeWages
                 }
                 workDay++;
             }
-            Console.WriteLine("Day: " + workDay + " Hours: " + workHour);
             wageAtMonthEnd = WagePerHour * workHour;
             return wageAtMonthEnd;
         }

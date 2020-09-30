@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace EmployeeWages
@@ -8,11 +9,20 @@ namespace EmployeeWages
     {
         bool _isPresent;
         bool _isFullTime;
+        string _company;
 
         public Employee()
         {
             this._isPresent = true;
             this._isFullTime = true;
+            this._company = "";
+        }
+        
+        public Employee(string company)
+        {
+            this._isPresent = true;
+            this._isFullTime = true;
+            this._company = company;
         }
 
         public bool IsPresent {
@@ -35,5 +45,7 @@ namespace EmployeeWages
                 return _isFullTime;
             }
         }
+
+        public string Company { get => _company; set => _company = value; }
     }
 }
