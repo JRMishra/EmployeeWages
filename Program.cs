@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 
 namespace EmployeeWages
 {
     class Program
     {
-        
-        static List<Company> allCompanies = new List<Company>();
-
+       
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Employee Wage Computation Program");
             Console.WriteLine("=============================================");
+
+            Dictionary<string, int> wageForCompanies = new Dictionary<string, int>();
 
             bool cont = true;
             int option;
@@ -24,20 +25,23 @@ namespace EmployeeWages
                     "2 : Retrieve Wage Details\n" +
                     "0 : Exit");
                 option = Int32.Parse(Console.ReadLine());
+
                 switch(option)
                 {
                     case 0:
                         cont = false;
                         break;
                     case 1:
-                        allCompanies.Add(EnterCompanyDetails());
+                        Company oneCompany = new Company();
+                        oneCompany.EnterCompanyDetails();
+
+                        EmpWageBuilder empWage = new EmpWageBuilder(oneCompany);
+                        wageForCompanies.Add(oneCompany.Name, empWage.TotalMonthlyWage);
                         break;
                     case 2:
-                        foreach(Company company in allCompanies)
+                        foreach(var company in wageForCompanies)
                         {
-                            EmpWageBuilder empWage = new EmpWageBuilder(company);
-                            Console.Write("Company : " + company.Name+" , ");
-                            Console.WriteLine("Monthly Wage :" + empWage.TotalMonthlyWage);
+                            Console.WriteLine("Company : " + company.Key+" , "+ "Monthly Wage :" + company.Value);
                         }
                         Console.WriteLine();
                         break;
@@ -50,7 +54,7 @@ namespace EmployeeWages
             return;
         }
 
-        static Company EnterCompanyDetails()
+        public Company EnterCompanyDetails()
         {
             Company company = new Company();
 
@@ -71,6 +75,7 @@ namespace EmployeeWages
 
             Console.WriteLine();
 
+            
             return company;
         }
     }

@@ -35,5 +35,27 @@ namespace EmployeeWages
         public int WagePerHour { get => _wagePerHour; set => _wagePerHour = value; }
         public int MonthlyMaxWorkHour { get => _monthlyMaxWorkHour; set => _monthlyMaxWorkHour = value; }
         public int MonthlyWorkingDay { get => _monthlyWorkingDay; set => _monthlyWorkingDay = value; }
+
+        public void EnterCompanyDetails()
+        {
+            Console.Write("Company Name : ");
+            Name = Console.ReadLine();
+
+            Console.Write("Full Day Work Hour : ");
+            FullDayWorkHour = Int32.Parse(Console.ReadLine());
+
+            Console.Write("Wage per Work Hour : ");
+            WagePerHour = Int32.Parse(Console.ReadLine());
+
+            Console.Write("Monthly Work Day : ");
+            MonthlyWorkingDay = Int32.Parse(Console.ReadLine());
+
+            Console.Write("Max Monthly Work Hour : ");
+            MonthlyMaxWorkHour = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine();
+
+            return;
+        }
     }
 }
