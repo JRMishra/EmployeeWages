@@ -7,7 +7,6 @@ namespace EmployeeWages
 {
     class Program
     {
-       
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Employee Wage Computation Program");
@@ -34,7 +33,6 @@ namespace EmployeeWages
                     case 1:
                         Company oneCompany = new Company();
                         oneCompany.EnterCompanyDetails();
-
                         EmpWageBuilder empWage = new EmpWageBuilder(oneCompany);
                         wageForCompanies.Add(oneCompany.Name, empWage.TotalMonthlyWage);
                         break;
@@ -52,31 +50,6 @@ namespace EmployeeWages
                 }
             }
             return;
-        }
-
-        public Company EnterCompanyDetails()
-        {
-            Company company = new Company();
-
-            Console.Write("Company Name : ");
-            company.Name = Console.ReadLine();
-
-            Console.Write("Full Day Work Hour : ");
-            company.FullDayWorkHour = Int32.Parse(Console.ReadLine());
-
-            Console.Write("Wage per Work Hour : ");
-            company.WagePerHour = Int32.Parse(Console.ReadLine());
-
-            Console.Write("Monthly Work Day : ");
-            company.MonthlyWorkingDay = Int32.Parse(Console.ReadLine());
-
-            Console.Write("Max Monthly Work Hour : ");
-            company.MonthlyMaxWorkHour = Int32.Parse(Console.ReadLine());
-
-            Console.WriteLine();
-
-            
-            return company;
         }
     }
 }
