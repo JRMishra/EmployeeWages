@@ -7,7 +7,9 @@ namespace EmployeeWages
 {
     interface ICompanyWageBuilder
     {
-        public void AddCompanies(Company company);
+        abstract public void AddCompany(Company company);
+
+        public void AddCompanies(List<Company> companies);
 
         public void PrintAllCompanyWages();
 

@@ -9,7 +9,7 @@ namespace EmployeeWages
     {
         LinkedList<CompanyEmpWage> allCompanyWages = new LinkedList<CompanyEmpWage>(); 
 
-        public void AddCompanies()
+        public void AddCompany()
         {
             Company company = new Company();
             company.CompanyWageProfile();
@@ -17,11 +17,19 @@ namespace EmployeeWages
 
             allCompanyWages.AddLast(companyEmpWage);
         }
-
-        public void AddCompanies(Company company)
+        
+        public void AddCompany(Company company)
         {
             CompanyEmpWage companyEmpWage = new CompanyEmpWage(company);
             allCompanyWages.AddLast(companyEmpWage);
+        }
+
+        public void AddCompanies(List<Company> company)
+        {
+            foreach(Company eachCompany in company)
+            {
+                AddCompany(eachCompany);
+            }    
         }
 
         public void PrintAllCompanyWages()

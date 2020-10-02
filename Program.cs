@@ -31,7 +31,18 @@ namespace EmployeeWages
                         cont = false;
                         break;
                     case 1:
-                        allCompanyWages.AddCompanies();
+                        Console.Write("Number of Company details you want to enter : ");
+                        int numDetail = Int32.Parse(Console.ReadLine());
+
+                        List<Company> companyList = new List<Company>();
+                        Company company = new Company();
+                        for(int i=0; i<numDetail; i++)
+                        {
+                            company.CompanyWageProfile();
+                            companyList.Add(company);
+                        }
+
+                        allCompanyWages.AddCompanies(companyList);
                         break;
                     case 2:
                         allCompanyWages.PrintAllCompanyWages();
@@ -46,6 +57,8 @@ namespace EmployeeWages
                         break;
                 }
             }
+            
+            Console.WriteLine("Thanks for use Employee Wage Computation Program");
             return;
         }
     }

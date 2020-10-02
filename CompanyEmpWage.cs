@@ -9,6 +9,7 @@ namespace EmployeeWages
         Employee _emp = new Employee();
         Company _company;
         int _totalMonthlyWage = 0;
+
         public CompanyEmpWage()
         {
             _emp = new Employee();
