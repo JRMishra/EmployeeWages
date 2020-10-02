@@ -9,6 +9,7 @@ namespace EmployeeWages
         Employee _emp = new Employee();
         Company _company;
         int _totalMonthlyWage = 0;
+        List<int> _dailyWages = new List<int>();
 
         public CompanyEmpWage()
         {
@@ -26,29 +27,46 @@ namespace EmployeeWages
             get
             {
                 if (this._totalMonthlyWage == 0)
-                    this._totalMonthlyWage = MonthlyWage();
+                    MonthlyWage();
                 return this._totalMonthlyWage;
+            }
+        }
+
+        public List<int> DailyWages
+        {
+            get
+            {
+                if(this._dailyWages.Count==0)
+                    MonthlyWage();
+                return _dailyWages;
             }
         }
 
         internal string Company { get => _company.Name;}
 
-        private int MonthlyWage()
+        private void MonthlyWage()
         {
-            int workDay = 0, workHour = 0, wageAtMonthEnd = 0;
+            int workDay = 0, workHour = 0;
             while (workDay < _company.MonthlyWorkingDay && workHour < _company.MonthlyMaxWorkHour)
             {
                 if (_emp.IsPresent)
                 {
                     if (_emp.IsFullTime)
+                    { 
+                        _dailyWages.Add(_company.FullDayWorkHour * _company.WagePerHour);
                         workHour += _company.FullDayWorkHour;
+                    }   
                     else
-                        workHour += _company.FullDayWorkHour / 2;
+                    {
+                        _dailyWages.Add((_company.FullDayWorkHour/2) * _company.WagePerHour);
+                        workHour += _company.FullDayWorkHour/2;
+                    }
                 }
                 workDay++;
             }
-            wageAtMonthEnd = _company.WagePerHour * workHour;
-            return wageAtMonthEnd;
+            this._totalMonthlyWage = _company.WagePerHour * workHour;
+
+            return;
         }
     }
 }

@@ -48,5 +48,20 @@ namespace EmployeeWages
                     Console.WriteLine("Company : " + cpw.Company + ", Total Monthly Wage :" + cpw.TotalMonthlyWage);
             }
         }
+
+        public void PrintDailyWage(string company)
+        {
+            List<int> dailyWages = new List<int>();
+            foreach (CompanyEmpWage cpw in allCompanyWages)
+            {
+                if (cpw.Company == company)
+                    dailyWages = cpw.DailyWages;
+            }
+            foreach(int wage in dailyWages)
+            {
+                Console.Write(wage + ", ");
+            }
+            Console.WriteLine();
+        }
     }
 }

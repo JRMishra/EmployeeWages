@@ -20,8 +20,9 @@ namespace EmployeeWages
             {
                 Console.WriteLine("Enter\n" +
                     "1 : Enter Company Details\n" +
-                    "2 : Retrieve all Wage Details\n" +
-                    "3 : Retrieve Wage of one company\n" +
+                    "2 : Retrieve all Monthly Wage Details\n" +
+                    "3 : Retrieve Monthly Wage of one company\n" +
+                    "4 : Print daily Wages of a company\n" +
                     "0 : Exit");
                 option = Int32.Parse(Console.ReadLine());
 
@@ -51,6 +52,10 @@ namespace EmployeeWages
                     case 3:
                         Console.Write("Enter Company Name :");
                         allCompanyWages.PrintCompanyWage(Console.ReadLine());
+                        break;
+                    case 4:
+                        Console.Write("Enter Company Name :");
+                        allCompanyWages.PrintDailyWage(Console.ReadLine());
                         break;
                     default:
                         Console.WriteLine("Wrong Option choosed");
