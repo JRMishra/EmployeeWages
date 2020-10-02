@@ -13,6 +13,6 @@ namespace EmployeeWages
 
         public void PrintAllCompanyWages();
 
-        public void PrintCompanyWage(string company);
+        public int RetrieveWageByCompany(string company);
     }
 }

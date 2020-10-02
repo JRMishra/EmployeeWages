@@ -51,7 +51,8 @@ namespace EmployeeWages
                         break;
                     case 3:
                         Console.Write("Enter Company Name :");
-                        allCompanyWages.PrintCompanyWage(Console.ReadLine());
+                        int wageOfCompany = allCompanyWages.RetrieveWageByCompany(Console.ReadLine());
+                        Console.WriteLine(wageOfCompany);
                         break;
                     case 4:
                         Console.Write("Enter Company Name :");

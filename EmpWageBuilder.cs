@@ -40,13 +40,14 @@ namespace EmployeeWages
             }
         }
         
-        public void PrintCompanyWage(string company)
+        public int RetrieveWageByCompany(string company)
         {
             foreach (CompanyEmpWage cpw in allCompanyWages)
             {
                 if(cpw.Company == company)
-                    Console.WriteLine("Company : " + cpw.Company + ", Total Monthly Wage :" + cpw.TotalMonthlyWage);
+                    return allCompanyWages.Find(cpw).Value.TotalMonthlyWage;           
             }
+            return 0;
         }
 
         public void PrintDailyWage(string company)
