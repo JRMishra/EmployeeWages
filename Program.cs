@@ -12,8 +12,7 @@ namespace EmployeeWages
             Console.WriteLine("Welcome to Employee Wage Computation Program");
             Console.WriteLine("=============================================");
 
-            Dictionary<string, int> wageForCompanies = new Dictionary<string, int>();
-
+            EmpWageBuilder allCompanyWages = new EmpWageBuilder();
             bool cont = true;
             int option;
 
@@ -21,7 +20,8 @@ namespace EmployeeWages
             {
                 Console.WriteLine("Enter\n" +
                     "1 : Enter Company Details\n" +
-                    "2 : Retrieve Wage Details\n" +
+                    "2 : Retrieve all Wage Details\n" +
+                    "3 : Retrieve Wage of one company\n" +
                     "0 : Exit");
                 option = Int32.Parse(Console.ReadLine());
 
@@ -31,22 +31,19 @@ namespace EmployeeWages
                         cont = false;
                         break;
                     case 1:
-                        Company oneCompany = new Company();
-                        oneCompany.EnterCompanyDetails();
-                        EmpWageBuilder empWage = new EmpWageBuilder(oneCompany);
-                        wageForCompanies.Add(oneCompany.Name, empWage.TotalMonthlyWage);
+                        allCompanyWages.AddCompanies();
                         break;
                     case 2:
-                        foreach(var company in wageForCompanies)
-                        {
-                            Console.WriteLine("Company : " + company.Key+" , "+ "Monthly Wage :" + company.Value);
-                        }
+                        allCompanyWages.PrintAllCompanyWages();
                         Console.WriteLine();
+                        break;
+                    case 3:
+                        Console.Write("Enter Company Name :");
+                        allCompanyWages.PrintCompanyWage(Console.ReadLine());
                         break;
                     default:
                         Console.WriteLine("Wrong Option choosed");
                         break;
-
                 }
             }
             return;

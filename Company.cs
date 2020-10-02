@@ -36,7 +36,7 @@ namespace EmployeeWages
         public int MonthlyMaxWorkHour { get => _monthlyMaxWorkHour; set => _monthlyMaxWorkHour = value; }
         public int MonthlyWorkingDay { get => _monthlyWorkingDay; set => _monthlyWorkingDay = value; }
 
-        public void EnterCompanyDetails()
+        public void CompanyWageProfile()
         {
             Console.Write("Company Name : ");
             Name = Console.ReadLine();

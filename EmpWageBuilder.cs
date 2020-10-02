@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,73 +7,38 @@ namespace EmployeeWages
 {
     class EmpWageBuilder
     {
-        Employee emp ;
-        int _fullDayWorkHour;
-        int _ratePerHour;
-        int _monthlyWorkDay;
-        int _maxHourPerMonth;
-        int _monthlyWage;
+        LinkedList<CompanyEmpWage> allCompanyWages = new LinkedList<CompanyEmpWage>(); 
 
-        public EmpWageBuilder()
+        public void AddCompanies()
         {
-            emp = new Employee();
-            this.FullDayWorkHour = 8;
-            this.WagePerHour = 20;
-            this.MonthlyWorkDay = 20;
-            this.MaxHourPerMonth = 100;
+            Company company = new Company();
+            company.CompanyWageProfile();
+            CompanyEmpWage companyEmpWage = new CompanyEmpWage(company);
+
+            allCompanyWages.AddLast(companyEmpWage);
         }
 
-        public EmpWageBuilder(string company, int FullDayWorkHour, int WagePerHour, int MonthlyWorkDay, int MaxMonthlyWorkHour)
+        public void AddCompanies(Company company)
         {
-            emp = new Employee(company);
-            this.FullDayWorkHour = FullDayWorkHour;
-            this.WagePerHour = WagePerHour;
-            this.MonthlyWorkDay = MonthlyWorkDay;
-            this.MaxHourPerMonth = MaxMonthlyWorkHour;
+            CompanyEmpWage companyEmpWage = new CompanyEmpWage(company);
+            allCompanyWages.AddLast(companyEmpWage);
         }
 
-        public EmpWageBuilder(Company company)
+        public void PrintAllCompanyWages()
         {
-            emp = new Employee(company.Name);
-            this.FullDayWorkHour = company.FullDayWorkHour;
-            this.WagePerHour = company.WagePerHour;
-            this.MonthlyWorkDay = company.MonthlyWorkingDay;
-            this.MaxHourPerMonth = company.MonthlyMaxWorkHour;
-        }
-
-        public int FullDayWorkHour { get => _fullDayWorkHour; set => _fullDayWorkHour = value; }
-        public int WagePerHour { get => _ratePerHour; set => _ratePerHour = value; }
-        public int MonthlyWorkDay { get => _monthlyWorkDay; set => _monthlyWorkDay = value; }
-        public int MaxHourPerMonth { get => _maxHourPerMonth; set => _maxHourPerMonth = value; }
-        public int TotalMonthlyWage {
-            get
+            foreach(CompanyEmpWage cpw in allCompanyWages)
             {
-                return MonthlyWage();
+                Console.WriteLine("Company : " + cpw.Company + ", Total Monthly Wage :" + cpw.TotalMonthlyWage);
             }
         }
-
-        public int MonthlyWage()
+        
+        public void PrintCompanyWage(string company)
         {
-            this._monthlyWage = MonthlyWage(emp, this.FullDayWorkHour, this.WagePerHour, this.MonthlyWorkDay, this.MaxHourPerMonth);
-            return this._monthlyWage;
-        }
-
-        private int MonthlyWage(Employee emp , int FullDayWorkHour, int WagePerHour, int MaxMonthlyWorkDay, int MaxMonthlyWorkHours)
-        {
-            int workDay = 0, workHour = 0, wageAtMonthEnd=0;
-            while(workDay<MaxMonthlyWorkDay && workHour<MaxMonthlyWorkHours)
+            foreach (CompanyEmpWage cpw in allCompanyWages)
             {
-                if(emp.IsPresent)
-                {
-                    if (emp.IsFullTime)
-                        workHour += FullDayWorkHour;
-                    else
-                        workHour += FullDayWorkHour / 2;  
-                }
-                workDay++;
+                if(cpw.Company == company)
+                    Console.WriteLine("Company : " + cpw.Company + ", Total Monthly Wage :" + cpw.TotalMonthlyWage);
             }
-            wageAtMonthEnd = WagePerHour * workHour;
-            return wageAtMonthEnd;
         }
     }
 }
