@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EmployeeWages
 {
-    class EmpWageBuilder
+    class EmpWageBuilder : ICompanyWageBuilder
     {
         LinkedList<CompanyEmpWage> allCompanyWages = new LinkedList<CompanyEmpWage>(); 
 
